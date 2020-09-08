@@ -1,4 +1,5 @@
 import { html, css, LitElement } from 'lit-element';
+import '@polymer/paper-card/paper-card'
 
 export class RenderFetch extends LitElement {
     static get styles() {
@@ -33,17 +34,19 @@ export class RenderFetch extends LitElement {
     render() {
             return html `
       <h2>Characters of Rick and Morty!!!</h2>
-      <div class="container" @info="${this.catchInfo}">
-        ${this.data.map(item => html`
-        <div>
-          <img src="${item.image}">
-          <p>${item.id}</p>
-          <p>${item.name}</p>
-          <p>${item.gender}</p>
-          <p>${item.location}</p>
+      <div class="container">
+        ${this.data.map(item => html `
+        <paper-card>
+          <div>
+            <img src="${item.image}">
+            <p>${item.id}</p>
+            <p>${item.name}</p>
+            <p>${item.gender}</p>
+            <p>${item.location}</p>
+          </div>
+        </paper-card>
+          `)}
         </div>
-        `)}
-      </div>
     `;
   }
 
