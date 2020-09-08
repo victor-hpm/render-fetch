@@ -8,44 +8,44 @@ export class RenderFetch extends LitElement {
         padding: 25px;
         color: var(--render-fetch-text-color, #000);
       }
+
+      .container {
+        display: flex;
+        border: 1px solid black;
+      }
     `;
     }
 
     static get properties() {
         return {
-            title: { type: String },
-            counter: { type: Number },
+            data: { type: Array }
         };
     }
 
     constructor() {
         super();
-        this.title = 'Hey there';
-        this.counter = 5;
+        this.data = [];
+
     }
 
-    __increment() {
-        this.counter += 1;
-    }
+
 
     render() {
             return html `
-      <h2>Characters of Rick and Morty</h2>
-      <div class="container" @info="${this.catchInfo}" >
-        ${this.infoapi.map(card => html`
+      <h2>Characters of Rick and Morty!!!</h2>
+      <div class="container" @info="${this.catchInfo}">
+        ${this.data.map(item => html`
         <div>
-          <img src="${card.image}">
-          <p>${card.id}</p>
-          <p>${card.name}</p>
-          <p>${card.gender}</p>
+          <img src="${item.image}">
+          <p>${item.id}</p>
+          <p>${item.name}</p>
+          <p>${item.gender}</p>
+          <p>${item.location}</p>
         </div>
         `)}
       </div>
-      <button @click=${this.__increment}>increment</button>
     `;
   }
 
-  catchInfo(e) {
-    console.log(e)
-  } 
+  
 }
